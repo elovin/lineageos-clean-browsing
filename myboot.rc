@@ -1,0 +1,13 @@
+# on boot setup ip tables rules
+on boot
+    exec u:r:su:s0 root root -- /system/etc/myboot.sh
+
+service dnscrypt-proxy /system/bin/logwrapper /system/bin/dnscrypt-proxy -config /system/etc/dnscrypt-proxy.toml
+    class main
+    user root
+    group root
+    oneshot
+    seclabel u:r:su:s0
+
+on property:sys.boot_completed=1
+    start dnscrypt-proxy

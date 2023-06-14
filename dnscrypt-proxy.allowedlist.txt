@@ -1,0 +1,76 @@
+# (omitting the *. still matches all subdomains, if you only want to allow the domain use =google.com) 
+# google, *.google.com is too lax IMO
+drive.google.com
+play.google.com
+docs.google.com
+calendar.google.com
+translate.google.com
+photos.google.com
+news.google.com
+finance.google.com
+shopping.google.com
+scholar.google.com
+contacts.google.com
+earth.google.com
+
+# technical and other domains
+developers.google.com
+console.developers.google.com
+cloud.google.com
+api.google.com
+ads.google.com
+analytics.google.com
+firebase.google.com
+colab.research.google.com
+accounts.google.com
+android.clients.google.com
+clients3.google.com
+gmscore-android.googleapis.com
+android.googleapis.com
+www.googleapis.com
+play.googleapis.com
+oauth2.googleapis.com
+www.google-analytics.com
+android.com
+
+# mac developer domains
+brew.sh
+
+# general developer sites
+openai.com
+stackexchange.com
+stackoverflow.com
+gstatic.com
+github.com
+github.io
+gitlab.com
+
+# devops, unix and admin sites
+cyberciti.biz
+k6.io
+k8s.io
+kubernetes.io
+gcr.io
+quay.io
+docker.io
+containerd.io
+helm.sh
+
+
+# microsoft domains for ms-office, teams, azure and active-directory
+teams.microsoft.com
+login.microsoftonline.com
+portal.azure.com
+graph.microsoft.com
+login.live.com
+api.login.microsoftonline.com
+management.azure.com
+login.windows.net
+office.com
+office365.com
+
+# german public transport
+bahn.de
+static-bahn.de
+img-bahn.de
+rnv-online.de
