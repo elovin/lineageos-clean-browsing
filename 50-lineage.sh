@@ -14,11 +14,13 @@ cat <<EOF
 etc/hosts
 etc/myboot.sh
 etc/init/myboot.rc
+etc/init/allow_ips_of_whitelisted_domains_for_thethering.sh
 etc/dnscrypt-proxy.blocklist.txt
 etc/dnscrypt-proxy.allowedlist.txt
 etc/dnscrypt-proxy.cloaking-rules.txt
 etc/dnscrypt-proxy.toml
 bin/dnscrypt-proxy
+bin/busybox
 EOF
 }
 
