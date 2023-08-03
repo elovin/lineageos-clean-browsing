@@ -31,4 +31,4 @@ Tested with lineageos 20.1
 2. [busybox](https://github.com/Magisk-Modules-Repo/busybox-ndk)
 
 ## Known Issues
-The scripts and services run with root as opposed using selinux and a none root user
+The scripts and services run with root which is probably not necessary (see [the first attribution link](#attribution))
