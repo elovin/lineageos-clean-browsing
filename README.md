@@ -31,4 +31,5 @@ Tested with lineageos 20.1
 2. [busybox](https://github.com/Magisk-Modules-Repo/busybox-ndk)
 
 ## Known Issues
-The scripts and services run with root which is probably not necessary (see [the first attribution link](#attribution))
+1. The scripts and services run with root which is probably not necessary (see [the first attribution link](#attribution))
+2. No automatic update for the dependencies (could be done in the 50-lineage.sh script after the OTA update)
