@@ -25,3 +25,10 @@ Tested with lineageos 20.1
 6. Connect your phone (approve adb access)
 7. Extend/Update the config files
 8. Run the setup script 'bash ./setup.sh'
+
+## Dependencies
+1. [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy)
+2. [busybox](https://github.com/Magisk-Modules-Repo/busybox-ndk)
+
+## Known Issues
+The scripts and services run with root as opposed using selinux and a none root user
