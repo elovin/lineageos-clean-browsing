@@ -13,8 +13,8 @@ list_files() {
 cat <<EOF
 etc/hosts
 etc/myboot.sh
+etc/allow_ips_from_allowedlist_for_thethering.sh
 etc/init/myboot.rc
-etc/init/allow_ips_of_whitelisted_domains_for_thethering.sh
 etc/dnscrypt-proxy.blocklist.txt
 etc/dnscrypt-proxy.allowedlist.txt
 etc/dnscrypt-proxy.cloaking-rules.txt
