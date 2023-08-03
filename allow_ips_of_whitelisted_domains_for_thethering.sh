@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Whitelisted domains file path
 WHITELIST_FILE="dnscrypt-proxy.allowedlist.txt"
