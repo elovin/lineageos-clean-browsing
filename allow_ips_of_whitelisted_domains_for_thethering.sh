@@ -12,35 +12,49 @@ resolve_ip() {
     ip_address=""
 
     # Use BusyBox nslookup and awk to extract IP address
-    ip_address=$(busybox nslookup "$domain" 2>/dev/null | busybox awk '/^Address: / { print $2; exit }')
+    ip_address=$(/system/bin/busybox nslookup "$domain" 2>/dev/null | /system/bin/busybox awk '/^Address: / { print $2; exit }')
 
     echo "$ip_address"
 }
 
-# Check if the whitelist file exists
-if [ ! -f "$WHITELIST_FILE" ]; then
-    echo "Whitelist file not found: $WHITELIST_FILE"
-    exit 1
-fi
-
 # Read each domain from the whitelist file using while-read loop, ignoring lines starting with '#' and empty lines
-while IFS= read -r line; do
-    # Ignore lines starting with '#' and empty lines
-    case "$line" in
-        \#*|'') continue ;;
-    esac
+lookup_and_prepend_ips_from_allowedlist_to_forwardchain(){
+    while IFS= read -r line; do
+        # Remove leading and trailing whitespace using BusyBox awk
+        line=$(echo "$line" | /system/bin/busybox awk '{$1=$1};1')
 
-    # Remove lines starting with '='
-    line=$(echo "$line" | busybox awk '!/^=/{print}')
+        # Remove the character '=' from the line using gsub in awk
+        line=$(echo "$line" | /system/bin/busybox awk '{gsub(/=/, ""); print}')
 
-    # Resolve IP address using BusyBox nslookup
-    ip=$(resolve_ip "$line")
+        # Ignore lines starting with '#' and empty lines
+        case "$line" in
+            \#*|'') continue ;;
+        esac
+    
+        # Resolve IP address using BusyBox nslookup
+        ip=$(resolve_ip "$line")
+    
+        if [ -n "$ip" ]; then
+            # Allow new IP address in iptables forwarding chain
+            /system/bin/iptables -I "$FORWARDING_CHAIN" -d "$ip" -j ACCEPT
+            echo "Allowed IP: $ip"
+        else
+            echo "Failed to resolve IP for domain: $line"
+        fi
+    done < "$WHITELIST_FILE"
+}
 
-    if [ -n "$ip" ]; then
-        # Allow new IP address in iptables forwarding chain
-        /system/bin/iptables -I "$FORWARDING_CHAIN" -d "$ip" -j ACCEPT
-        echo "Allowed IP: $ip"
-    else
-        echo "Failed to resolve IP for domain: $line"
+main(){
+    # Check if the whitelist file exists
+    if [ ! -f "$WHITELIST_FILE" ]; then
+        echo "Whitelist file not found: $WHITELIST_FILE"
+        exit 1
     fi
-done < "$WHITELIST_FILE"
+
+    while true; do
+        lookup_and_prepend_ips_from_allowedlist_to_forwardchain
+        /system/bin/sleep 600  # Sleep for 10 minutes (600 seconds)
+    done
+}
+
+main
