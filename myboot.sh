@@ -22,17 +22,11 @@ echo -n 1 >/proc/sys/net/ipv4/conf/all/route_localnet
 
 ##### Tethering handling
 
-### block all tcp/udp traffic from tethering (until we have a propper ip blocklist + port block list in place to block SOCKS5 / VPNs / Tor)
+### block all tcp/udp traffic from tethering by default 
 /system/bin/iptables -I FORWARD -p udp --dport 1:65535 -j DROP
 /system/bin/iptables -I FORWARD -p tcp --dport 1:65535 -j DROP
 
-# WIP
+### allow all ips from domains listed in the dnscrypt-proxy allowedlist in the forward chain
 
-### block tethering outside workhours
-# Drop forwarding on weekdays (Monday to Friday) between 22 pm and 8 am
-#/system/bin/iptables -I FORWARD -m time --timestart 22:00 --timestop 08:00 --weekdays Mon,Tue,Wed,Thu,Fri -j DROP
-
-# Drop forwarding on weekends (Saturday and Sunday)
-#/system/bin/iptables -I FORWARD -m time --timestart 00:00 --timestop 23:59 --weekdays Sat,Sun -j DROP
-
-
+# run in background since this script runs every 10 minutes  
+./allow_ips_from_allowedlist_for_thethering.sh &
