@@ -1,10 +1,8 @@
 # lineageos-clean-browsing
 
 ## About
-This repo is a collection of scripts and config files to apply allowedlist/whitelist DNS filtering
+This repo is a collection of scripts and config files to apply allowedlist/whitelist DNS (and some IP) filtering
 to all traffic from or passing through a lineageos phone. 
-
-In the future I might also add firewall scripts to apply ip block lists to block all known public proxy/vpn/tor ips.
 
 ## Attribution
 The scripts in in this repo are inspired by these guides:
@@ -31,5 +29,9 @@ Tested with lineageos 20.1
 2. [busybox](https://github.com/Magisk-Modules-Repo/busybox-ndk)
 
 ## Known Issues
-1. The scripts and services run with root which is probably not necessary (see [the first attribution link](#attribution))
-2. No automatic update for the dependencies (could be done in the 50-lineage.sh script after the OTA update)
+1. The ip whitelisting script based on the domains whitelisted for dnscrypt is WIP
+2. The ip whitelisting script might not cover all necessary ips since there can be a lot of ips behind the same root domain
+   so for now you would need to add a lot of sub domains and/or a list of ip ranges to cover everything you need.
+   (The whitelist is only necessary for tethering)
+3. The scripts and services run with root which is probably not necessary (see [the first attribution link](#attribution))
+4. No automatic update for the dependencies (could be done in the 50-lineage.sh script after the OTA update)
