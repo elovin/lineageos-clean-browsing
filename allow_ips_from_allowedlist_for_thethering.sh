@@ -36,7 +36,7 @@ lookup_and_prepend_ips_from_allowedlist_to_forwardchain(){
     
         if [ -n "$ip" ]; then
             # Allow new IP address in iptables forwarding chain
-            /system/bin/iptables -I "$FORWARDING_CHAIN" -d "$ip" -j ACCEPT
+            /system/bin/iptables -I "$FORWARDING_CHAIN" -d "$ip/255.255.255.0" -j ACCEPT
             echo "Allowed IP: $ip"
         else
             echo "Failed to resolve IP for domain: $line"
