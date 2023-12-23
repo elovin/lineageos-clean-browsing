@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# disable private dns, so that the dnscrypt-proxy is used
+# disable private dns, so that the dnscrypt-proxy can not be bypassed from the android UI
 settings put global private_dns_mode off
 
-# block dns over lts from phone or tethering
+# block dns over TLS from phone or tethering
 /system/bin/iptables -I OUTPUT -p udp --dport 853 -j DROP
 /system/bin/iptables -I OUTPUT -p tcp --dport 853 -j DROP
 
@@ -28,5 +28,5 @@ echo -n 1 >/proc/sys/net/ipv4/conf/all/route_localnet
 
 ### allow all ips from domains listed in the dnscrypt-proxy allowedlist in the forward chain
 
-# run in background since this script runs every 10 minutes  
+# run in background since this script resolves the ips of the domains every 10 minutes  
 ./allow_ips_from_allowedlist_for_thethering.sh &
