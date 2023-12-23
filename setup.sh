@@ -32,7 +32,7 @@ adb push dnscrypt-proxy.cloaking-rules.txt /system/etc/
 adb push dnscrypt-proxy.toml /system/etc/
 
 # fetch dnscrypt-proxy binary
-dnscryptVersion="2.1.4"
+dnscryptVersion="2.1.5"
 curl -LO "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscryptVersion}/dnscrypt-proxy-android_arm64-${dnscryptVersion}.zip"
 unzip -j "dnscrypt-proxy-android_arm64-${dnscryptVersion}.zip" '*/dnscrypt-proxy'
 
