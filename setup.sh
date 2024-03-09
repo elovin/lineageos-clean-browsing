@@ -18,10 +18,6 @@ adb push myboot.rc /system/etc/init/
 adb push myboot.sh /system/etc/
 adb shell chmod +x /system/etc/myboot.sh
 
-# /system/etc/allow_ips_from_allowedlist_for_thethering.sh
-adb push allow_ips_from_allowedlist_for_thethering.sh /system/etc/
-adb shell chmod +x /system/etc/allow_ips_from_allowedlist_for_thethering.sh
-
 # add dnscrypt-proxy files
 # add sites you want to allow / whitelist
 adb push dnscrypt-proxy.allowedlist.txt /system/etc/
