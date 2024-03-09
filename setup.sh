@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+dnscrypt_version="2.1.5"
+
 while ! adb root; do
     echo "Waiting for adb root authorization..."
     echo "This will only work if you have lineageos root debuggin enabled"
@@ -16,10 +18,6 @@ adb push myboot.rc /system/etc/init/
 adb push myboot.sh /system/etc/
 adb shell chmod +x /system/etc/myboot.sh
 
-# /system/etc/allow_ips_from_allowedlist_for_thethering.sh
-adb push allow_ips_from_allowedlist_for_thethering.sh /system/etc/
-adb shell chmod +x /system/etc/allow_ips_from_allowedlist_for_thethering.sh
-
 # add dnscrypt-proxy files
 # add sites you want to allow / whitelist
 adb push dnscrypt-proxy.allowedlist.txt /system/etc/
@@ -32,24 +30,17 @@ adb push dnscrypt-proxy.cloaking-rules.txt /system/etc/
 adb push dnscrypt-proxy.toml /system/etc/
 
 # fetch dnscrypt-proxy binary
-dnscryptVersion="2.1.5"
-curl -LO "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscryptVersion}/dnscrypt-proxy-android_arm64-${dnscryptVersion}.zip"
-unzip -j "dnscrypt-proxy-android_arm64-${dnscryptVersion}.zip" '*/dnscrypt-proxy'
+curl -LO "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip"
+unzip -j "dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip" '*/dnscrypt-proxy'
 
 # add dnscrypt-binary and make it executable
 adb push dnscrypt-proxy /system/bin/
 adb shell chmod +x /system/bin/dnscrypt-proxy
-
-# fetch busybox android arm64 build for the firewall scripts
-curl -LO "https://github.com/Magisk-Modules-Repo/busybox-ndk/raw/master/busybox-arm64-selinux"
-
-# add busybox-binary and make it executable
-adb push busybox-arm64-selinux /system/bin/busybox
-adb shell chmod +x /system/bin/busybox
 
 # /system/addon.d/50-lineage.sh
 # to backup and restore files on upgrade
 adb push 50-lineage.sh /system/addon.d/
 adb shell chmod +x /system/addon.d/50-lineage.sh
 
+# add hosts file to block subdomain of domains whitelisted in dnscrypt-proxy
 adb push hosts /system/etc/hosts

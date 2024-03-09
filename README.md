@@ -10,8 +10,6 @@ to the custom port 55 on which dnscrypt is configured to listen.
 * It also blocks the DoT port 853 in general since dnscrypt does not need it.
 
 * All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables.
-* Whitelists ip ranges for thethering based on the dnscrypt allowed domain list
-
 
 ## Attribution
 The scripts in in this repo are inspired by these guides:
@@ -36,10 +34,7 @@ You need to enable adb debugging and adb root debugging in the developer setting
 
 ## Dependencies
 1. [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy)
-2. [busybox](https://github.com/Magisk-Modules-Repo/busybox-ndk)
 
 ## Known Issues
-1. The scripts and services currently run as root, I might add a SELINUX profile in the future (see [the first attribution link](#attribution))
-2. The Dnscrypt and busybox dependencies have to be updated manually
-3. The ip whitelisting script (for thethering) based on the domains whitelisted for dnscrypt is WIP
-4. The ip whitelisting script (for thethering) might not cover all necessary ips.
+1. The scripts and services currently run as root, which is not necessary (see [the first attribution link](#attribution))
+3. No auto updates for the dnscrypt binary
