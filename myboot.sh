@@ -25,8 +25,3 @@ echo -n 1 >/proc/sys/net/ipv4/conf/all/route_localnet
 ### block all tcp/udp traffic from tethering by default 
 /system/bin/iptables -I FORWARD -p udp --dport 1:65535 -j DROP
 /system/bin/iptables -I FORWARD -p tcp --dport 1:65535 -j DROP
-
-### allow all ips from domains listed in the dnscrypt-proxy allowedlist in the forward chain
-
-# run in background since this script resolves the ips of the domains every 10 minutes  
-./allow_ips_from_allowedlist_for_thethering.sh &
