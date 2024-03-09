@@ -10,8 +10,6 @@ to the custom port 55 on which dnscrypt is configured to listen.
 * It also blocks the DoT port 853 in general since dnscrypt does not need it.
 
 * All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables.
-* Whitelists ip ranges for thethering based on the dnscrypt allowed domain list
-
 
 ## Attribution
 The scripts in in this repo are inspired by these guides:
