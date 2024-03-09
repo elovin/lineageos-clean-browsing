@@ -5,9 +5,9 @@ This repo is a collection of scripts and config files to apply allowedlist/white
 to all traffic from or passing through a lineageos phone. 
 
 * It blocks the android builtin DNS over TLS feature and redirects all regular DNS queries (using iptables)
-to the custom port 55 where dnscrypt is configured to listen to.
+to the custom port 55 on which dnscrypt is configured to listen.
 
-* It also blocks the DoT port 853 in general since dnscrypt uses DNS over HTTPS.
+* It also blocks the DoT port 853 in general since dnscrypt does not need it.
 
 * All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables.
 * Whitelists ip ranges for thethering based on the dnscrypt allowed domain list
@@ -29,7 +29,6 @@ You need to enable adb debugging and adb root debugging in the developer setting
 
 1. Install ADB tools on your linux/mac (I have not tested it on windows)
 2. Modify the config files for dnscrypt and lineageos
-3. 
 4. Enable developer settings on your phone
 5. Enable USB debugging and USB root debugging (On your lineageos phone)
 6. Connect your phone (approve adb access)
@@ -43,4 +42,4 @@ You need to enable adb debugging and adb root debugging in the developer setting
 1. The scripts and services currently run as root, I might add a SELINUX profile in the future (see [the first attribution link](#attribution))
 2. The Dnscrypt and busybox dependencies have to be updated manually
 3. The ip whitelisting script (for thethering) based on the domains whitelisted for dnscrypt is WIP
-4. The ip whitelisting script (for thethering) might not cover all necessary ips since there can be a lot of ips behind the same root domain
+4. The ip whitelisting script (for thethering) might not cover all necessary ips.
