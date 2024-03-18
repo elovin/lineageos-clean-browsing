@@ -9,7 +9,9 @@ to the custom port 55 on which dnscrypt is configured to listen.
 
 * It also blocks the DoT port 853 in general since dnscrypt does not need it.
 
-* All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables.
+* All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables (Because google family link does not cover thethering).
+
+* These adjustments are meant to be used together with google family link to prevent the user from installing apps which can break the DNS filter (e.g. cloudflare WARP)
 
 ## Attribution
 The scripts in in this repo are inspired by these guides:
@@ -19,8 +21,8 @@ The scripts in in this repo are inspired by these guides:
 
 ## Tested LineageOS versions
 
+* 21
 * (Deprecated) 20
-* (WIP) 21
 
 ## Gettings started
 You need to enable adb debugging and adb root debugging in the developer settings.
