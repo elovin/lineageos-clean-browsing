@@ -11,7 +11,7 @@ to the custom port 55 on which dnscrypt is configured to listen.
 
 * All traffic passing through the phone (Thethering wifi/bluetooth/usb) is blocked through iptables (Because google family link does not cover thethering).
 
-* These adjustments are meant to be used together with google family link to prevent the user from installing apps which can break the DNS filter (e.g. cloudflare WARP)
+* These adjustments are meant to be used together with google family link to prevent the user from installing apps which can break the DNS filter (e.g. cloudflare WARP, firefox with addons, it is best to stick to a mobile browser which does not allow the configuration of a DNS server or VPN addons (e.g. chrome))
 
 ## Attribution
 The scripts in in this repo are inspired by these guides:
