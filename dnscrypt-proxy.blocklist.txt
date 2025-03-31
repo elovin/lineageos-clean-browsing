@@ -1,4 +1,2 @@
-# this blocks everything except for what you allow in the allowed list
 # to block subdomains of allowed domains you will need to use the hosts file 
 # (e.g. because safe search is broken for europe.google.com and asia.google.com you probably want to add them to the hosts file when you allowed *.google.com)
-*.*

@@ -1,2 +1,2 @@
 # add redirects here to force e.g. safe search
-www.google.*		forcesafesearch.google.com
+# www.google.*		forcesafesearch.google.com

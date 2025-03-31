@@ -12,17 +12,17 @@
 listen_addresses = ['127.0.0.1:55']
 
 # e.g. safe search redirect
-cloaking_rules = '/system/etc/dnscrypt-proxy.cloaking-rules.txt'
+# cloaking_rules = '/system/etc/dnscrypt-proxy.cloaking-rules.txt'
 
-# block everything
-[blocked_names]
-blocked_names_file = '/system/etc/dnscrypt-proxy.blocklist.txt'
+# blocklist
+# [blocked_names]
+# blocked_names_file = '/system/etc/dnscrypt-proxy.blocklist.txt'
 
-[allowed_names]
-allowed_names_file = '/system/etc/dnscrypt-proxy.allowedlist.txt'
+# redirects
+# [allowed_names]
+# allowed_names_file = '/system/etc/dnscrypt-proxy.allowedlist.txt'
 
 
 [static]
  [static.'controld']
  stamp = 'sdns://AgcAAAAAAAAACTc2Ljc2LjIuNAAUZnJlZWRucy5jb250cm9sZC5jb20DL3Aw'
-

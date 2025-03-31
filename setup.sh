@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-dnscrypt_version="2.1.5"
+dnscrypt_version=$(cat dnscrypt-proxy.version.txt)
 
 while ! adb root; do
     echo "Waiting for adb root authorization..."
@@ -21,7 +21,7 @@ adb shell chmod +x /system/etc/myboot.sh
 # add dnscrypt-proxy files
 # add sites you want to allow / whitelist
 adb push dnscrypt-proxy.allowedlist.txt /system/etc/
-# default is to block everything so that only what we allow works
+
 adb push dnscrypt-proxy.blocklist.txt /system/etc/
 # e.g. apply google safe search and safe search for other sites you allowed
 adb push dnscrypt-proxy.cloaking-rules.txt /system/etc/
@@ -30,11 +30,16 @@ adb push dnscrypt-proxy.cloaking-rules.txt /system/etc/
 adb push dnscrypt-proxy.toml /system/etc/
 
 # fetch dnscrypt-proxy binary
-curl -LO "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip"
-unzip -j "dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip" '*/dnscrypt-proxy'
+dnscrypt_proxy_file_name="dnscrypt-proxy-${dnscrypt_version}"
+
+if [ ! -e "${dnscrypt_proxy_file_name}" ]; then
+    curl -LO "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip"
+    unzip -j "dnscrypt-proxy-android_arm64-${dnscrypt_version}.zip" '*/dnscrypt-proxy'
+    mv dnscrypt-proxy "${dnscrypt_proxy_file_name}"
+fi
 
 # add dnscrypt-binary and make it executable
-adb push dnscrypt-proxy /system/bin/
+adb push "${dnscrypt_proxy_file_name}" /system/bin/dnscrypt-proxy
 adb shell chmod +x /system/bin/dnscrypt-proxy
 
 # /system/addon.d/50-lineage.sh

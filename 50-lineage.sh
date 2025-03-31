@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/sbin/sh
 #
 # ADDOND_VERSION=2
 #
@@ -7,7 +7,7 @@
 # /system is formatted and reinstalled, then the file is restored.
 #
 
-. /postinstall/tmp/backuptool.functions
+. /tmp/backuptool.functions
 
 list_files() {
 cat <<EOF
