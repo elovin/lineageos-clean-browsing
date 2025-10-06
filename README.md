@@ -50,11 +50,12 @@ The scripts in in this repo are inspired by these guides:
 You need to enable adb debugging and adb root debugging in the developer settings on your lineageOS device
 
 1. Install ADB tools on your linux/mac (I have not tested it on windows)
-2. Modify the config files for dnscrypt (otherwise it will just use the controld public resolver)
-3. Enable developer settings
-4. Enable USB debugging and USB root debugging (On your lineageos phone)
-5. Connect your phone (approve adb access)
-6. Run the setup script 'bash ./setup.sh'
+2. Modify the config files for DNSCrypt (otherwise it will just use the controld public resolver)
+   2.1 To generate your own DNSCrypt stamp for your prefered DNS provider you can use the stamp generator from [DNSCrypt](https://dnscrypt.info/stamps/)
+4. Enable developer settings
+5. Enable USB debugging and USB root debugging (On your lineageos phone)
+6. Connect your phone (approve adb access)
+7. Run the setup script 'bash ./setup.sh'
 
 ## Dependencies
 1. [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy)
