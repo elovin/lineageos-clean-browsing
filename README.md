@@ -36,6 +36,7 @@ The scripts in in this repo are inspired by these guides:
 
 ## Tested LineageOS versions
 
+* 23.0
 * 22.2
 * 22.1
 * 21 (Deprecated)
