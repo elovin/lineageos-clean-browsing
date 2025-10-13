@@ -19,6 +19,8 @@ etc/dnscrypt-proxy.allowedlist.txt
 etc/dnscrypt-proxy.cloaking-rules.txt
 etc/dnscrypt-proxy.toml
 bin/dnscrypt-proxy
+etc/private_dns_name.txt
+etc/force_private_dns.sh
 EOF
 }
 

@@ -49,3 +49,8 @@ adb shell chmod +x /system/addon.d/50-lineage.sh
 
 # add hosts file to block subdomain of domains whitelisted in dnscrypt-proxy
 adb push hosts /system/etc/hosts
+
+# work around local dns not working for ipv6
+adb push private_dns_name.txt /system/etc
+adb push force_private_dns.sh /system/etc
+adb shell chmod +x /system/etc/force_private_dns.sh
