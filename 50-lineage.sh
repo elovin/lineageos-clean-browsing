@@ -11,16 +11,10 @@
 
 list_files() {
 cat <<EOF
-etc/hosts
-etc/myboot.sh
 etc/init/myboot.rc
-etc/dnscrypt-proxy.blocklist.txt
-etc/dnscrypt-proxy.allowedlist.txt
-etc/dnscrypt-proxy.cloaking-rules.txt
-etc/dnscrypt-proxy.toml
-bin/dnscrypt-proxy
-etc/private_dns_name.txt
+etc/restrict_settings.sh
 etc/force_private_dns.sh
+etc/private_dns_name.txt
 EOF
 }
 

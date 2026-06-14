@@ -1,3 +1,0 @@
-# (omitting the *. still matches all subdomains, 
-# if you only want to allow the domain use =google.com) 
-
